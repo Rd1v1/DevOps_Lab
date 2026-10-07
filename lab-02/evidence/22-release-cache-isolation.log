@@ -1,0 +1,236 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 907B 0.0s done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 0.9s
+
+#3 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#3 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.0s done
+#3 CACHED
+
+#4 [internal] load metadata for docker.io/library/nginx:1.28-alpine
+#4 DONE 0.6s
+
+#5 [internal] load metadata for docker.io/library/node:22-alpine
+#5 DONE 0.8s
+
+#6 [internal] load .dockerignore
+#6 transferring context: 86B 0.0s done
+#6 DONE 0.1s
+
+#7 [internal] load build context
+#7 DONE 0.0s
+
+#8 [builder 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#8 resolve docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#8 ...
+
+#9 [runtime 1/4] FROM docker.io/library/nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
+#9 resolve docker.io/library/nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236 0.2s done
+#9 DONE 0.2s
+
+#9 [runtime 1/4] FROM docker.io/library/nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
+#9 CACHED
+
+#8 [builder 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#8 resolve docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402 0.2s done
+#8 DONE 0.2s
+
+#7 [internal] load build context
+#7 transferring context: 1.19kB 0.1s done
+#7 DONE 0.3s
+
+#10 [runtime 2/4] RUN rm /etc/nginx/conf.d/default.conf
+#10 ...
+
+#11 [builder 2/6] WORKDIR /src
+#11 CACHED
+
+#12 [builder 3/6] COPY package*.json ./
+#12 CACHED
+
+#13 [builder 4/6] RUN --mount=type=cache,target=/root/.npm npm ci
+#13 CACHED
+
+#14 [builder 5/6] COPY . .
+#14 DONE 0.3s
+
+#10 [runtime 2/4] RUN rm /etc/nginx/conf.d/default.conf
+#10 DONE 1.2s
+
+#15 [builder 6/6] RUN --mount=type=secret,id=release     set -eu; export VITE_RELEASE=local;     if [ -f /run/secrets/release ]; then export VITE_RELEASE="$(cat /run/secrets/release)"; fi;     npm run build -- --outDir "/out/lab02-release" --emptyOutDir
+#15 ...
+
+#16 [runtime 3/4] COPY nginx.conf /etc/nginx/nginx.conf
+#16 DONE 0.2s
+
+#15 [builder 6/6] RUN --mount=type=secret,id=release     set -eu; export VITE_RELEASE=local;     if [ -f /run/secrets/release ]; then export VITE_RELEASE="$(cat /run/secrets/release)"; fi;     npm run build -- --outDir "/out/lab02-release" --emptyOutDir
+#15 2.022 
+#15 2.022 > notes-web@1.0.0 build
+#15 2.022 > vite build --outDir /out/lab02-release --emptyOutDir
+#15 2.022 
+#15 2.992 vite v6.4.3 building for production...
+#15 3.214 transforming...
+#15 3.317 ✓ 4 modules transformed.
+#15 3.375 rendering chunks...
+#15 3.410 computing gzip size...
+#15 3.426 ../out/lab02-release/index.html                 1.81 kB │ gzip: 0.97 kB
+#15 3.426 ../out/lab02-release/assets/index-BnB0BUtx.css  2.75 kB │ gzip: 1.13 kB
+#15 3.426 ../out/lab02-release/assets/index-BfB6NoLh.js   2.84 kB │ gzip: 1.39 kB
+#15 3.427 ✓ built in 343ms
+#15 3.472 npm notice
+#15 3.472 npm notice New major version of npm available! 10.9.9 -> 12.2.0
+#15 3.472 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+#15 3.472 npm notice To update run: npm install -g npm@12.2.0
+#15 3.472 npm notice
+#15 DONE 3.6s
+
+#17 [runtime 4/4] COPY --from=builder /out/lab02-release/ /usr/share/nginx/html
+#17 DONE 0.1s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 0.6s done
+#18 exporting manifest sha256:f011262d4c26e1871ba0ecdce21e96dddc0ee8a6c6d89b88c435634586713011 0.0s done
+#18 exporting config sha256:96f89d10f36dcc09608c60b43f9b6e704f36b18c40dfcab8a55feaa93b6e13b3 0.0s done
+#18 exporting attestation manifest sha256:b5661288121c3a4f1fa6ffe33f47e0be97792416da191f989583150e39f2078b 0.0s done
+#18 exporting manifest list sha256:ea5318fd774ed513e1d160deec66daacc706f86dbd3b4db637fc1d8556d76228
+#18 exporting manifest list sha256:ea5318fd774ed513e1d160deec66daacc706f86dbd3b4db637fc1d8556d76228 0.0s done
+#18 naming to docker.io/library/devops-lab02-web-release:latest done
+#18 unpacking to docker.io/library/devops-lab02-web-release:latest 0.2s done
+#18 DONE 1.0s
+#1 [internal] load local bake definitions
+#1 reading from stdin 588B 0.1s done
+#1 DONE 0.1s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 907B 0.0s done
+#2 DONE 0.0s
+
+#3 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#3 DONE 0.8s
+
+#4 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#4 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.1s done
+#4 DONE 0.1s
+
+#4 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#4 CACHED
+
+#5 [internal] load metadata for docker.io/library/nginx:1.28-alpine
+#5 DONE 0.3s
+
+#6 [internal] load metadata for docker.io/library/node:22-alpine
+#6 DONE 0.4s
+
+#7 [internal] load .dockerignore
+#7 transferring context: 86B 0.0s done
+#7 DONE 0.1s
+
+#8 [internal] load build context
+#8 DONE 0.0s
+
+#9 [builder 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#9 resolve docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402 0.1s done
+#9 DONE 0.1s
+
+#10 [runtime 1/4] FROM docker.io/library/nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
+#10 resolve docker.io/library/nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236 0.1s done
+#10 CACHED
+
+#8 [internal] load build context
+#8 transferring context: 315B 0.0s done
+#8 DONE 0.1s
+
+#11 [builder 3/6] COPY package*.json ./
+#11 CACHED
+
+#12 [builder 4/6] RUN --mount=type=cache,target=/root/.npm npm ci
+#12 CACHED
+
+#13 [builder 2/6] WORKDIR /src
+#13 CACHED
+
+#14 [builder 5/6] COPY . .
+#14 CACHED
+
+#15 [builder 6/6] RUN --mount=type=secret,id=release     set -eu; export VITE_RELEASE=local;     if [ -f /run/secrets/release ]; then export VITE_RELEASE="$(cat /run/secrets/release)"; fi;     npm run build -- --outDir "/out/local" --emptyOutDir
+#15 ...
+
+#16 [runtime 2/4] RUN rm /etc/nginx/conf.d/default.conf
+#16 DONE 0.8s
+
+#17 [runtime 3/4] COPY nginx.conf /etc/nginx/nginx.conf
+#17 DONE 0.4s
+
+#15 [builder 6/6] RUN --mount=type=secret,id=release     set -eu; export VITE_RELEASE=local;     if [ -f /run/secrets/release ]; then export VITE_RELEASE="$(cat /run/secrets/release)"; fi;     npm run build -- --outDir "/out/local" --emptyOutDir
+#15 2.038 
+#15 2.038 > notes-web@1.0.0 build
+#15 2.038 > vite build --outDir /out/local --emptyOutDir
+#15 2.038 
+#15 2.797 vite v6.4.3 building for production...
+#15 3.030 transforming...
+#15 3.134 ✓ 4 modules transformed.
+#15 3.223 rendering chunks...
+#15 3.248 computing gzip size...
+#15 3.255 ../out/local/index.html                 1.81 kB │ gzip: 0.97 kB
+#15 3.255 ../out/local/assets/index-BnB0BUtx.css  2.75 kB │ gzip: 1.13 kB
+#15 3.256 ../out/local/assets/index-BA9riUY-.js   2.84 kB │ gzip: 1.39 kB
+#15 3.265 ✓ built in 371ms
+#15 3.303 npm notice
+#15 3.303 npm notice New major version of npm available! 10.9.9 -> 12.2.0
+#15 3.303 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+#15 3.303 npm notice To update run: npm install -g npm@12.2.0
+#15 3.303 npm notice
+#15 DONE 3.4s
+
+#18 [runtime 4/4] COPY --from=builder /out/local/ /usr/share/nginx/html
+#18 DONE 0.2s
+
+#19 exporting to image
+#19 exporting layers
+#19 exporting layers 0.3s done
+#19 exporting manifest sha256:341584b5a56c174974905771b61c0d96eede6f27c437d069d7a8af2ab4228c0c 0.0s done
+#19 exporting config sha256:25cfc11e23cb270867d692cd5d3d9c5b81d4ff827502cbd4f9ddab38deb34dab 0.0s done
+#19 exporting attestation manifest sha256:d020d582bfe64f560359d6c7a524159ab23c2ad82f792a0bdf9ac8eeeea46cf5 0.0s done
+#19 exporting manifest list sha256:00a01a605da5f025fd96832d449f4e03b9c67d75686be000594a2e2261513464
+#19 exporting manifest list sha256:00a01a605da5f025fd96832d449f4e03b9c67d75686be000594a2e2261513464 0.0s done
+#19 naming to docker.io/library/devops-lab02-frontend:latest done
+#19 unpacking to docker.io/library/devops-lab02-frontend:latest
+#19 unpacking to docker.io/library/devops-lab02-frontend:latest 0.2s done
+#19 DONE 0.8s
+
+#20 resolving provenance for metadata file
+#20 DONE 0.0s
+ devops-lab02-frontend  Built
+PASS: secret release and default local remain separate across cached builds
+ Container devops-lab02-frontend-1  Recreate
+ Container devops-lab02-db-1  Running
+ Container devops-lab02-backend-1  Running
+ Container devops-lab02-frontend-1  Recreated
+ Container devops-lab02-nginx-1  Running
+ Container devops-lab02-db-1  Waiting
+ Container devops-lab02-frontend-1  Starting
+ Container devops-lab02-frontend-1  Started
+ Container devops-lab02-db-1  Healthy
+ Container devops-lab02-backend-1  Waiting
+ Container devops-lab02-frontend-1  Waiting
+ Container devops-lab02-backend-1  Healthy
+ Container devops-lab02-frontend-1  Healthy
+ Container devops-lab02-backend-1  Waiting
+ Container devops-lab02-frontend-1  Waiting
+ Container devops-lab02-nginx-1  Waiting
+ Container devops-lab02-db-1  Waiting
+ Container devops-lab02-db-1  Healthy
+ Container devops-lab02-nginx-1  Healthy
+ Container devops-lab02-backend-1  Healthy
+ Container devops-lab02-frontend-1  Healthy
+{"db":true,"status":"ok"}
+NAME                      IMAGE                   COMMAND                  SERVICE    CREATED          STATUS                    PORTS
+devops-lab02-backend-1    devops-lab02-backend    "/app/notes"             backend    7 minutes ago    Up 7 minutes (healthy)    8000/tcp
+devops-lab02-db-1         postgres:16-alpine      "docker-entrypoint.s…"   db         15 minutes ago   Up 15 minutes (healthy)   5432/tcp
+devops-lab02-frontend-1   devops-lab02-frontend   "/docker-entrypoint.…"   frontend   10 seconds ago   Up 7 seconds (healthy)    80/tcp, 8080/tcp
+devops-lab02-nginx-1      devops-lab02-nginx      "/app/start.sh"          nginx      7 minutes ago    Up 7 minutes (healthy)    127.0.0.1:8443->8443/tcp, 127.0.0.1:8088->8080/tcp

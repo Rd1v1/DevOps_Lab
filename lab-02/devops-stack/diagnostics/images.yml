@@ -1,0 +1,8 @@
+# Reuse normal images while isolating fault experiments by project name.
+services:
+  backend:
+    image: devops-lab02-backend
+  frontend:
+    image: devops-lab02-frontend
+  nginx:
+    image: devops-lab02-nginx

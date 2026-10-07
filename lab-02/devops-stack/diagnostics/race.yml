@@ -1,0 +1,9 @@
+services:
+  db:
+    healthcheck:
+      disable: true
+    entrypoint: ["/bin/sh", "-c", "sleep 12; exec docker-entrypoint.sh postgres"]
+  backend:
+    depends_on:
+      db:
+        condition: service_started

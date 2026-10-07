@@ -1,0 +1,76 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.08kB 0.0s done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 0.8s
+
+#3 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#3 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.1s done
+#3 CACHED
+
+#4 [internal] load metadata for docker.io/library/golang:1.25-alpine
+#4 ...
+
+#5 [internal] load metadata for docker.io/library/alpine:3.22
+#5 DONE 0.5s
+
+#4 [internal] load metadata for docker.io/library/golang:1.25-alpine
+#4 DONE 0.5s
+
+#6 [internal] load .dockerignore
+#6 transferring context: 92B done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 698B 0.0s done
+#7 DONE 0.0s
+
+#8 [runtime 1/5] FROM docker.io/library/alpine:3.22@sha256:5291449c3df73caf6ed85e649dec1b9e818b39a5d8c871e97afc13e9cd5e8fa8
+#8 resolve docker.io/library/alpine:3.22@sha256:5291449c3df73caf6ed85e649dec1b9e818b39a5d8c871e97afc13e9cd5e8fa8 0.0s done
+#8 DONE 0.0s
+
+#9 [builder 1/6] FROM docker.io/library/golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59
+#9 resolve docker.io/library/golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59 0.0s done
+#9 DONE 0.1s
+
+#10 [builder 2/6] WORKDIR /src
+#10 CACHED
+
+#11 [builder 3/6] COPY go.mod go.sum ./
+#11 CACHED
+
+#12 [builder 4/6] RUN --mount=type=cache,target=/go/pkg/mod go mod download
+#12 CACHED
+
+#13 [builder 5/6] COPY . .
+#13 DONE 0.0s
+
+#14 [builder 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-s -w" -o /out/notes .
+#14 DONE 1.0s
+
+#15 [runtime 2/5] RUN adduser -D -H -u 10001 app
+#15 CACHED
+
+#16 [runtime 3/5] WORKDIR /app
+#16 CACHED
+
+#17 [runtime 4/5] COPY --from=builder /out/notes /app/notes
+#17 DONE 0.1s
+
+#18 [runtime 5/5] COPY --chmod=755 healthcheck.sh /app/healthcheck.sh
+#18 DONE 0.1s
+
+#19 exporting to image
+#19 exporting layers
+#19 exporting layers 0.6s done
+#19 exporting manifest sha256:f90bec4b03ef778ac93fd6a7bc02ee6c49a4f15dfa6e726f808d68a9df05dd90 0.0s done
+#19 exporting config sha256:750952649b1ad219cdb10d291b10c2b4588d388c357eba9631a741ac71c403dc 0.0s done
+#19 exporting attestation manifest sha256:2de7a106b28fd22e195c2b2ef8c8a347743340a27b8493644144ae72c5b4cf44 0.0s done
+#19 exporting manifest list sha256:e30c44afa240ca759cb2d42617566be547cdf792c81643e2aa16ed38b70861b1 0.0s done
+#19 naming to docker.io/library/devops-lab02-api-cachecheck:latest
+#19 naming to docker.io/library/devops-lab02-api-cachecheck:latest done
+#19 unpacking to docker.io/library/devops-lab02-api-cachecheck:latest 0.1s done
+#19 DONE 0.9s

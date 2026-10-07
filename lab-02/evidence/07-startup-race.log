@@ -1,0 +1,63 @@
+ Network lab02-race_default  Creating
+ Network lab02-race_default  Created
+ Volume lab02-race_db_data  Creating
+ Volume lab02-race_db_data  Created
+ Container lab02-race-db-1  Creating
+ Container lab02-race-db-1  Created
+ Container lab02-race-backend-1  Creating
+ Container lab02-race-backend-1  Created
+ Container lab02-race-db-1  Starting
+ Container lab02-race-db-1  Started
+ Container lab02-race-backend-1  Starting
+ Container lab02-race-backend-1  Started
+NAME                   IMAGE                  COMMAND                  SERVICE   CREATED         STATUS                            PORTS
+lab02-race-backend-1   devops-lab02-backend   "/app/notes"             backend   7 seconds ago   Up 5 seconds (health: starting)   8000/tcp
+lab02-race-db-1        postgres:16-alpine     "/bin/sh -c 'sleep 1…"   db        7 seconds ago   Up 5 seconds                      5432/tcp
+backend-1  | 2026-10-04T09:50:13.911411989Z 2026/10/04 09:50:13 DB not reachable at start; readiness will retry
+backend-1  | 2026-10-04T09:50:13.911469532Z 2026/10/04 09:50:13 notes-api listening on :8000
+Connecting to 127.0.0.1:8000 (127.0.0.1:8000)
+  HTTP/1.1 503 Service Unavailable
+wget: server returned error: HTTP/1.1 503 Service Unavailable
+{"Status":"running","Running":true,"Paused":false,"Restarting":false,"OOMKilled":false,"Dead":false,"Pid":19580,"ExitCode":0,"Error":"","StartedAt":"2026-10-04T09:50:13.606250684Z","FinishedAt":"0001-01-01T00:00:00Z","Health":{"Status":"starting","FailingStreak":1,"Log":[{"Start":"2026-10-04T09:50:18.91381489Z","End":"2026-10-04T09:50:19.067911548Z","ExitCode":1,"Output":"wget: server returned error: HTTP/1.1 503 Service Unavailable\n"}]}}
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+10001               19580               19557               0                   09:50               ?                   00:00:00            /app/notes
+{"db":true,"status":"ok"}
+db-1       | 2026-10-04T09:50:28.988178508Z 2026-10-04 09:50:28.987 UTC [43] LOG:  shutting down
+db-1       | 2026-10-04T09:50:29.001308906Z 2026-10-04 09:50:28.999 UTC [43] LOG:  checkpoint starting: shutdown immediate
+db-1       | 2026-10-04T09:50:29.252300060Z 2026-10-04 09:50:29.252 UTC [43] LOG:  checkpoint complete: wrote 926 buffers (5.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.051 s, sync=0.189 s, total=0.264 s; sync files=301, longest=0.010 s, average=0.001 s; distance=4283 kB, estimate=4283 kB; lsn=0/1925D58, redo lsn=0/1925D58
+db-1       | 2026-10-04T09:50:29.265352995Z 2026-10-04 09:50:29.265 UTC [42] LOG:  database system is shut down
+db-1       | 2026-10-04T09:50:29.279368207Z  done
+db-1       | 2026-10-04T09:50:29.279412629Z server stopped
+db-1       | 2026-10-04T09:50:29.282792579Z 
+db-1       | 2026-10-04T09:50:29.282824480Z PostgreSQL init process complete; ready for start up.
+db-1       | 2026-10-04T09:50:29.282829670Z 
+db-1       | 2026-10-04T09:50:29.330738502Z 2026-10-04 09:50:29.330 UTC [1] LOG:  starting PostgreSQL 16.15 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+db-1       | 2026-10-04T09:50:29.330780964Z 2026-10-04 09:50:29.330 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db-1       | 2026-10-04T09:50:29.330988955Z 2026-10-04 09:50:29.330 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db-1       | 2026-10-04T09:50:29.343662960Z 2026-10-04 09:50:29.338 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-1       | 2026-10-04T09:50:29.352244899Z 2026-10-04 09:50:29.351 UTC [58] LOG:  database system was shut down at 2026-10-04 09:50:29 UTC
+db-1       | 2026-10-04T09:50:29.365034620Z 2026-10-04 09:50:29.364 UTC [1] LOG:  database system is ready to accept connections
+backend-1  | 2026-10-04T09:50:13.911411989Z 2026/10/04 09:50:13 DB not reachable at start; readiness will retry
+backend-1  | 2026-10-04T09:50:13.911469532Z 2026/10/04 09:50:13 notes-api listening on :8000
+PASS: backend started before DB; health was 503 then recovered to 200
+ Container lab02-race-db-1  Recreate
+ Container lab02-race-db-1  Recreated
+ Container lab02-race-backend-1  Running
+ Container lab02-race-db-1  Starting
+ Container lab02-race-db-1  Started
+ Container lab02-race-db-1  Waiting
+ Container lab02-race-db-1  Healthy
+ Container lab02-race-backend-1  Waiting
+ Container lab02-race-db-1  Waiting
+ Container lab02-race-backend-1  Healthy
+ Container lab02-race-db-1  Healthy
+ Container lab02-race-backend-1  Stopping
+ Container lab02-race-backend-1  Stopped
+ Container lab02-race-backend-1  Removing
+ Container lab02-race-backend-1  Removed
+ Container lab02-race-db-1  Stopping
+ Container lab02-race-db-1  Stopped
+ Container lab02-race-db-1  Removing
+ Container lab02-race-db-1  Removed
+ Network lab02-race_default  Removing
+ Network lab02-race_default  Removed

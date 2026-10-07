@@ -1,0 +1,13 @@
+services:
+  backend:
+    build:
+      target: diagnostics
+    command: ["/app/memory-pressure"]
+    healthcheck:
+      disable: true
+    restart: "no"
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+          cpus: "1.0"

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#151d2c" />
+    <title>Заметки · DevOps Lab</title>
+    <script type="module" crossorigin src="/assets/index-BA9riUY-.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BnB0BUtx.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header><span class="eyebrow">DEVOPS LAB / 02</span><div id="health" role="status">Проверяем соединение…</div></header>
+      <section class="intro"><h1>Место для мыслей.</h1><p>Сохраняйте идеи, планы и маленькие открытия.</p></section>
+      <div class="workspace">
+        <section class="composer"><h2>Новая заметка</h2>
+          <form id="note-form">
+            <label for="title">Название</label><input id="title" name="title" required maxlength="200" placeholder="О чём эта заметка?" />
+            <label for="body">Текст</label><textarea id="body" name="body" rows="7" placeholder="Запишите самое важное…"></textarea>
+            <button id="save" type="submit">Сохранить заметку <span aria-hidden="true">↗</span></button>
+          </form><p id="message" role="status" aria-live="polite"></p>
+        </section>
+        <section class="collection"><div class="collection-heading"><h2>Ваши заметки <span id="count">0</span></h2><button type="button" id="refresh" class="quiet">Обновить</button></div><div id="notes" aria-live="polite"></div></section>
+      </div>
+      <footer>Go + PostgreSQL · Docker Compose <span id="release"></span></footer>
+    </main>
+  </body>
+</html>

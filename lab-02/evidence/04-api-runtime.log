@@ -1,0 +1,80 @@
+NAME                      IMAGE                   COMMAND                  SERVICE    CREATED         STATUS                   PORTS
+devops-lab02-backend-1    devops-lab02-backend    "/app/notes"             backend    3 minutes ago   Up 3 minutes (healthy)   8000/tcp
+devops-lab02-db-1         postgres:16-alpine      "docker-entrypoint.s…"   db         3 minutes ago   Up 3 minutes (healthy)   5432/tcp
+devops-lab02-frontend-1   devops-lab02-frontend   "/docker-entrypoint.…"   frontend   3 minutes ago   Up 3 minutes (healthy)   80/tcp, 8080/tcp
+devops-lab02-nginx-1      devops-lab02-nginx      "/docker-entrypoint.…"   nginx      2 minutes ago   Up 2 minutes (healthy)   127.0.0.1:8443->8443/tcp, 127.0.0.1:8088->8080/tcp
+SERVICE  #   UID    PID   PPID  C   STIME  TTY  TIME      CMD
+backend  1   10001  9582  9558  0   09:45  ?    00:00:00  /app/notes
+uid=10001(app) gid=10001(app) groups=10001(app)
+PID1: /app/notes 
+memory=268435456 nano_cpus=1000000000 user=app
+CONTAINER ID   NAME                      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O        PIDS
+ee5a66ec0686   devops-lab02-nginx-1      0.00%     14.32MiB / 31.31GiB   0.04%     23.4kB / 35.8kB   20.5kB / 4.1kB   13
+b18e5e631cad   devops-lab02-backend-1    0.00%     3.152MiB / 256MiB     1.23%     16kB / 22.5kB     0B / 0B          7
+03f8ad85bb6f   devops-lab02-db-1         3.32%     41.86MiB / 31.31GiB   0.13%     19.6kB / 10.4kB   5.98MB / 54MB    7
+8b30df17df86   devops-lab02-frontend-1   0.00%     15.12MiB / 31.31GiB   0.05%     2.07kB / 126B     5.97MB / 4.1kB   13
+{"db":true,"status":"ok"}
+[{"id":1,"title":"Smoke check","body":"HTTPS -\u003e nginx -\u003e Go -\u003e PostgreSQL"},{"id":2,"title":"Smoke check","body":"HTTPS -\u003e nginx -\u003e Go -\u003e PostgreSQL"}]
+HTTP/1.1 301 Moved Permanently
+Server: nginx/1.28.3
+Date: Sun, 04 Oct 2026 09:49:02 GMT
+Content-Type: text/html
+Content-Length: 169
+Connection: keep-alive
+Location: https://localhost:8443/
+
+Connecting to 172.24.0.5
+CONNECTED(00000003)
+depth=0 CN=devops-stack.local
+verify error:num=18:self-signed certificate
+verify return:1
+depth=0 CN=devops-stack.local
+verify return:1
+---
+Certificate chain
+ 0 s:CN=devops-stack.local
+   i:CN=devops-stack.local
+   a:PKEY: RSA, 2048 (bit); sigalg: sha256WithRSAEncryption
+   v:NotBefore: Oct  4 09:42:40 2026 GMT; NotAfter: Oct  4 09:42:40 2027 GMT
+-----BEGIN CERTIFICATE-----
+MIIDTTCCAjWgAwIBAgIUWmdust0QlJq1Ke21U1Lo3LYB3DkwDQYJKoZIhvcNAQEL
+BQAwHTEbMBkGA1UEAwwSZGV2b3BzLXN0YWNrLmxvY2FsMB4XDTI2MTAwNDA5NDI0
+MFoXDTI3MTAwNDA5NDI0MFowHTEbMBkGA1UEAwwSZGV2b3BzLXN0YWNrLmxvY2Fs
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsSNLtBjSZztQKwZ2gRPH
+2wkkILpJD+xrguDEIKdl0EXnphX0vlTsTZKpFYfyMsOxwwG5ap+H3/oPesGMkp7D
+iq6JAAyhKbtTpbrIMxdf3u2ojnPR6J9lhkgB2JOyyD5AJvFEkyo0pKUytmLtUGHb
+/PSWmsFdGFpfqrHHyUQdQbcOhV1TGdL+AotCkPfopnimkQLt0md/FP7p983fHUPU
+OxQ1iwAXPu0+mBQ6fKQeoGirRWiNfIxZJQrreqJp+7LwNmEOWVurmPynZPhYle8E
+WzyqAwq0tPoV3yxFgho2KfuVUOZNxwEGkgWadRcQ/tWAiXYTgutZyT5BCEf3tHJh
+0wIDAQABo4GEMIGBMB0GA1UdDgQWBBQj8d3Wp7NsAKniDm9ZlwJ7RdbIbDAfBgNV
+HSMEGDAWgBQj8d3Wp7NsAKniDm9ZlwJ7RdbIbDAPBgNVHRMBAf8EBTADAQH/MC4G
+A1UdEQQnMCWCEmRldm9wcy1zdGFjay5sb2NhbIIJbG9jYWxob3N0hwR/AAABMA0G
+CSqGSIb3DQEBCwUAA4IBAQAOFJLitnRvwJb5HrZTNi1qPq94ri+CI0ggSYgoEo/g
+NDVecApomdhy6puDe3lMCz9gIw+pTQ8w8LUyAFiHdKQ6L2aHuDgSVdLcGnkwTpEX
+oIJJDeiyicPq/CZ8kCBOySYUF5M1sMigmBreZcYvc5LpGjzIAObidfT4KPW/Agfl
+tCWHtdWcSmZ6OrOY5W5Yhgiy3B+wZ8x0dtw945hGS4pO6mCNPQLozhF3wrHjjllh
+fRu/bInIIzAK0n8HN5accMgqi+Mji1Em4G69unp+M7gIYHgnmfXBLB4Ne09/eiUJ
+rnAK6DNqqLn1Mw3fV2/QIHfr8ds2tUSWMCLMHKQ4H/aG
+-----END CERTIFICATE-----
+---
+Server certificate
+subject=CN=devops-stack.local
+issuer=CN=devops-stack.local
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: rsa_pss_rsae_sha256
+Negotiated TLS1.3 group: X25519MLKEM768
+---
+SSL handshake has read 2497 bytes and written 1622 bytes
+Verification error: self-signed certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Protocol: TLSv1.3
+Server public key is 2048 bit
+This TLS version forbids renegotiation.
+No ALPN negotiated
+Early data was not sent
+Verify return code: 18 (self-signed certificate)
+---
+DONE

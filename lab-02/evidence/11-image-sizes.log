@@ -1,0 +1,4 @@
+["devops-lab02-backend:latest"] size_bytes=7473432 user=app
+["devops-lab02-frontend:latest"] size_bytes=25972406 user=nginx
+["devops-lab02-nginx:latest"] size_bytes=25972796 user=nginx
+["devops-lab02-api-bad:latest"] size_bytes=362772992 user=

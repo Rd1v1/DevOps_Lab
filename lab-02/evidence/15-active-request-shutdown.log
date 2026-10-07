@@ -1,0 +1,50 @@
+ state  | wait_event_type 
+--------+-----------------
+ active | Lock
+(1 row)
+
+ Container devops-lab02-backend-1  Stopping
+ Container devops-lab02-backend-1  Stopped
+[{"id":1,"title":"Smoke check","body":"HTTPS -\u003e nginx -\u003e Go -\u003e PostgreSQL"},{"id":2,"title":"Smoke check","body":"HTTPS -\u003e nginx -\u003e Go -\u003e PostgreSQL"},{"id":3,"title":"╨Я╤А╨░╨║╤В╨╕╨║╨░ 2 ╨▓╤Л╨┐╨╛╨╗╨╜╨╡╨╜╨░","body":"╨Ч╨░╨╝╨╡╤В╨║╨░ ╤Б╨╛╨╖╨┤╨░╨╜╨░ ╤З╨╡╤А╨╡╨╖ ╨╕╨╜╤В╨╡╤А╤Д╨╡╨╣╤Б. ╨Ф╨░╨╜╨╜╤Л╨╡ ╤Б╨╛╤Е╤А╨░╨╜╤П╤О╤В╤Б╤П ╨▓ PostgreSQL."}]
+
+HTTP=200
+BEGIN
+LOCK TABLE
+ pg_sleep 
+----------
+ 
+(1 row)
+
+COMMIT
+backend-1  | 2026/10/04 09:49:13 notes-api listening on :8000
+backend-1  | 2026/10/04 09:52:26 SIGTERM received, shutting down gracefully...
+backend-1  | 2026/10/04 09:52:28 server stopped
+exit=0 oom=false
+ Container devops-lab02-frontend-1  Recreate
+ Container devops-lab02-db-1  Running
+ Container devops-lab02-backend-1  Recreate
+ Container devops-lab02-backend-1  Recreated
+ Container devops-lab02-frontend-1  Recreated
+ Container devops-lab02-nginx-1  Recreate
+ Container devops-lab02-nginx-1  Recreated
+ Container devops-lab02-frontend-1  Starting
+ Container devops-lab02-db-1  Waiting
+ Container devops-lab02-frontend-1  Started
+ Container devops-lab02-db-1  Healthy
+ Container devops-lab02-backend-1  Starting
+ Container devops-lab02-backend-1  Started
+ Container devops-lab02-backend-1  Waiting
+ Container devops-lab02-frontend-1  Waiting
+ Container devops-lab02-frontend-1  Healthy
+ Container devops-lab02-backend-1  Healthy
+ Container devops-lab02-nginx-1  Starting
+ Container devops-lab02-nginx-1  Started
+ Container devops-lab02-nginx-1  Waiting
+ Container devops-lab02-db-1  Waiting
+ Container devops-lab02-backend-1  Waiting
+ Container devops-lab02-frontend-1  Waiting
+ Container devops-lab02-backend-1  Healthy
+ Container devops-lab02-db-1  Healthy
+ Container devops-lab02-frontend-1  Healthy
+ Container devops-lab02-nginx-1  Healthy
+PASS: request blocked on DB lock completed with HTTP 200 during graceful shutdown

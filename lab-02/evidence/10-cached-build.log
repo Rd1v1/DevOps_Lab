@@ -1,0 +1,207 @@
+--progress is a global compose flag, better use `docker compose --progress xx build ...
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.84kB 0.1s done
+#1 DONE 0.1s
+
+#2 [frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 750B 0.0s done
+#2 DONE 0.0s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.08kB 0.0s done
+#3 DONE 0.0s
+
+#4 [nginx internal] load build definition from Dockerfile
+#4 transferring dockerfile: 1.12kB 0.0s done
+#4 DONE 0.0s
+
+#5 [nginx] resolve image config for docker-image://docker.io/docker/dockerfile:1
+#5 DONE 1.3s
+
+#6 [backend] docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#6 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.0s done
+#6 CACHED
+
+#7 [nginx internal] load metadata for docker.io/library/alpine:3.22
+#7 ...
+
+#8 [backend internal] load metadata for docker.io/library/golang:1.25-alpine
+#8 DONE 0.7s
+
+#9 [frontend internal] load metadata for docker.io/library/nginx:1.28-alpine
+#9 DONE 0.7s
+
+#7 [nginx internal] load metadata for docker.io/library/alpine:3.22
+#7 DONE 0.7s
+
+#10 [frontend internal] load metadata for docker.io/library/node:22-alpine
+#10 DONE 0.7s
+
+#11 [backend internal] load .dockerignore
+#11 transferring context: 92B done
+#11 DONE 0.0s
+
+#12 [nginx internal] load .dockerignore
+#12 transferring context: 56B done
+#12 DONE 0.0s
+
+#13 [frontend internal] load .dockerignore
+#13 transferring context: 86B done
+#13 DONE 0.0s
+
+#14 [nginx internal] load build context
+#14 DONE 0.0s
+
+#15 [frontend internal] load build context
+#15 DONE 0.0s
+
+#16 [backend internal] load build context
+#16 transferring context: 508B 0.0s done
+#16 DONE 0.1s
+
+#17 [frontend runtime 1/5] FROM docker.io/library/nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
+#17 resolve docker.io/library/nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
+#17 resolve docker.io/library/nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236 0.1s done
+#17 DONE 0.1s
+
+#18 [backend builder 1/6] FROM docker.io/library/golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59
+#18 resolve docker.io/library/golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59 0.1s done
+#18 DONE 0.1s
+
+#19 [nginx runtime 1/5] FROM docker.io/library/alpine:3.22@sha256:5291449c3df73caf6ed85e649dec1b9e818b39a5d8c871e97afc13e9cd5e8fa8
+#19 resolve docker.io/library/alpine:3.22@sha256:5291449c3df73caf6ed85e649dec1b9e818b39a5d8c871e97afc13e9cd5e8fa8 0.1s done
+#19 DONE 0.1s
+
+#20 [frontend builder 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#20 resolve docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402 0.1s done
+#20 DONE 0.1s
+
+#14 [nginx internal] load build context
+#14 transferring context: 133B done
+#14 DONE 0.0s
+
+#21 [backend builder 4/6] RUN --mount=type=cache,target=/go/pkg/mod go mod download
+#21 CACHED
+
+#22 [backend builder 5/6] COPY . .
+#22 CACHED
+
+#23 [backend builder 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-s -w" -o /out/notes .
+#23 CACHED
+
+#24 [backend runtime 4/5] COPY --from=builder /out/notes /app/notes
+#24 CACHED
+
+#25 [backend runtime 2/5] RUN adduser -D -H -u 10001 app
+#25 CACHED
+
+#26 [backend builder 3/6] COPY go.mod go.sum ./
+#26 CACHED
+
+#27 [backend runtime 3/5] WORKDIR /app
+#27 CACHED
+
+#28 [backend builder 2/6] WORKDIR /src
+#28 CACHED
+
+#29 [backend runtime 5/5] COPY --chmod=755 healthcheck.sh /app/healthcheck.sh
+#29 CACHED
+
+#30 [nginx runtime 2/5] RUN rm /etc/nginx/conf.d/default.conf
+#30 CACHED
+
+#31 [nginx runtime 3/5] COPY nginx.conf /etc/nginx/nginx.conf
+#31 CACHED
+
+#32 [nginx openssl-builder 4/4] WORKDIR /work
+#32 CACHED
+
+#33 [nginx openssl-builder 3/4] COPY --chmod=755 generate-cert.sh /work/generate-cert.sh
+#33 CACHED
+
+#34 [nginx runtime 4/5] COPY conf.d/default.conf /etc/nginx/conf.d/default.conf
+#34 CACHED
+
+#35 [nginx cert-builder 1/1] RUN --mount=type=secret,id=cert_key,required=true     --mount=type=secret,id=cert_crt,required=true     mkdir -p /certs && cp /run/secrets/cert_key /certs/server.key     && openssl x509 -in /run/secrets/cert_crt -out /certs/server.crt     && chmod 600 /certs/server.key
+#35 CACHED
+
+#36 [nginx openssl-builder 2/4] RUN apk add --no-cache openssl
+#36 CACHED
+
+#37 [nginx runtime 5/5] COPY --from=cert-builder --chown=nginx:nginx /certs/ /etc/nginx/ssl/
+#37 CACHED
+
+#15 [frontend internal] load build context
+#15 transferring context: 315B done
+#15 DONE 0.0s
+
+#38 [backend] exporting to image
+#38 exporting layers done
+#38 exporting manifest sha256:4bd7e0ecd3d63949f66513bcfdfe071688cba9b7cc54fdaf1cac6ee5cd371e50 done
+#38 exporting config sha256:5a813f44d3127947e6750354ce3ce6436b0a28f9de1bcf6dd9a4dc5e855147ab done
+#38 ...
+
+#30 [frontend runtime 2/5] RUN rm /etc/nginx/conf.d/default.conf
+#30 CACHED
+
+#39 [frontend runtime 3/4] COPY nginx.conf /etc/nginx/nginx.conf
+#39 CACHED
+
+#40 [frontend builder 3/6] COPY package*.json ./
+#40 CACHED
+
+#41 [frontend builder 2/6] WORKDIR /src
+#41 CACHED
+
+#42 [frontend builder 5/6] COPY . .
+#42 CACHED
+
+#43 [frontend builder 4/6] RUN --mount=type=cache,target=/root/.npm npm ci
+#43 CACHED
+
+#44 [frontend builder 6/6] RUN --mount=type=secret,id=release     if [ -f /run/secrets/release ]; then export VITE_RELEASE="$(cat /run/secrets/release)"; fi; npm run build
+#44 CACHED
+
+#45 [frontend runtime 4/4] COPY --from=builder /src/dist /usr/share/nginx/html
+#45 CACHED
+
+#38 [backend] exporting to image
+#38 exporting attestation manifest sha256:bef2e5f291a55b91db86e343c52cf7704ae3601a02802e353305eb6f871bfed3
+#38 exporting attestation manifest sha256:bef2e5f291a55b91db86e343c52cf7704ae3601a02802e353305eb6f871bfed3 0.1s done
+#38 exporting manifest list sha256:0c56a313b87fe7f74190d98aba43dba8aaea30a94300782cb43c7d466453a0cd
+#38 exporting manifest list sha256:0c56a313b87fe7f74190d98aba43dba8aaea30a94300782cb43c7d466453a0cd 0.1s done
+#38 naming to docker.io/library/devops-lab02-backend:latest 0.0s done
+#38 unpacking to docker.io/library/devops-lab02-backend:latest 0.0s done
+#38 DONE 0.4s
+
+#46 [nginx] exporting to image
+#46 exporting layers 0.0s done
+#46 exporting manifest sha256:c762787bb85cdd34967d9d8f05554ba347bad0a7f80f279254079d3c93e3935f 0.0s done
+#46 exporting config sha256:f0cacd4a5b301e398d9901e7055bb25a6db601d9e0f946065a2640121f0a4b06 done
+#46 exporting attestation manifest sha256:576a1b41fd41601b3bcb96b0c359a0a4623eac4e1aa997928ecbcf6449f89e26 0.1s done
+#46 exporting manifest list sha256:f094663dcf5c3f46e73adf4b1c4ee963152ddd9622c089209427457be5778c33 0.0s done
+#46 naming to docker.io/library/devops-lab02-nginx:latest done
+#46 unpacking to docker.io/library/devops-lab02-nginx:latest 0.0s done
+#46 DONE 0.5s
+
+#47 [frontend] exporting to image
+#47 exporting layers 0.0s done
+#47 exporting manifest sha256:b0903512e434aef94efb4b45487172fd76d2f27ba5dcb1fc5517bc4f3f8d677a 0.0s done
+#47 exporting config sha256:8cc51632697e01e5d8e6d281ed8e9e67a4b8f8ff1fd52c57250d011cf3722756 0.0s done
+#47 exporting attestation manifest sha256:9eca3ec02225550ddffa0d6734b4bd209250e073e674e1217aaeaf5e4c1d1536 0.1s done
+#47 exporting manifest list sha256:5ff07c280daffb0867d147c3855f1e2f1a11352c9acea4b8353fdb820071e39d 0.0s done
+#47 naming to docker.io/library/devops-lab02-frontend:latest done
+#47 unpacking to docker.io/library/devops-lab02-frontend:latest 0.1s done
+#47 DONE 0.5s
+
+#48 [backend] resolving provenance for metadata file
+#48 DONE 0.1s
+
+#49 [nginx] resolving provenance for metadata file
+#49 DONE 0.1s
+
+#50 [frontend] resolving provenance for metadata file
+#50 DONE 0.0s
+ devops-lab02-backend  Built
+ devops-lab02-frontend  Built
+ devops-lab02-nginx  Built

@@ -1,0 +1,7 @@
+# Educational anti-example. Never use this image for the normal stack.
+FROM golang:1.25
+WORKDIR /app
+COPY . .
+ENV DATABASE_URL=postgres://notes:notes@localhost:5432/notes
+RUN go mod download && go build -o /app/notes .
+CMD ./notes

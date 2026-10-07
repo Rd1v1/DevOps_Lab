@@ -1,0 +1,75 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: notes
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Run scripts/init.ps1 or scripts/init.sh first}
+      POSTGRES_DB: notes
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U notes -d notes"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  backend:
+    build:
+      context: ./backend
+      target: runtime
+    environment:
+      DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "/app/healthcheck.sh"]
+      interval: 5s
+      timeout: 3s
+      start_period: 5s
+      retries: 5
+    stop_grace_period: 15s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: "1.0"
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+  nginx:
+    environment:
+      HTTPS_PORT: ${HTTPS_PORT:-8443}
+    build:
+      context: ./nginx
+      secrets:
+        - cert_key
+        - cert_crt
+    depends_on:
+      backend:
+        condition: service_healthy
+      frontend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${HTTPS_PORT:-8443}:8443"
+      - "127.0.0.1:${HTTP_PORT:-8088}:8080"
+    restart: unless-stopped
+  adminer:
+    image: adminer:5
+    profiles: ["debug"]
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8081:8080"
+    restart: unless-stopped
+secrets:
+  cert_key:
+    file: ./nginx/ssl/server.key
+  cert_crt:
+    file: ./nginx/ssl/server.crt
+volumes:
+  db_data:

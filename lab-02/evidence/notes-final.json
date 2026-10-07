@@ -1,0 +1,1 @@
+[{"id":1,"title":"Smoke check","body":"HTTPS -\u003e nginx -\u003e Go -\u003e PostgreSQL"},{"id":2,"title":"Smoke check","body":"HTTPS -\u003e nginx -\u003e Go -\u003e PostgreSQL"},{"id":3,"title":"Практика 2 выполнена","body":"Заметка создана через интерфейс. Данные сохраняются в PostgreSQL."}]

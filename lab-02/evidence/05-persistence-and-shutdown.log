@@ -1,0 +1,57 @@
+ Container devops-lab02-backend-1  Stopping
+ Container devops-lab02-backend-1  Stopped
+backend-1  | 2026/10/04 09:45:07 notes-api listening on :8000
+backend-1  | 2026/10/04 09:49:04 SIGTERM received, shutting down gracefully...
+backend-1  | 2026/10/04 09:49:04 server stopped
+Shutdown ExitCode=0 OOMKilled=False
+ Container devops-lab02-nginx-1  Stopping
+ Container devops-lab02-nginx-1  Stopped
+ Container devops-lab02-nginx-1  Removing
+ Container devops-lab02-nginx-1  Removed
+ Container devops-lab02-backend-1  Stopping
+ Container devops-lab02-frontend-1  Stopping
+ Container devops-lab02-backend-1  Stopped
+ Container devops-lab02-backend-1  Removing
+ Container devops-lab02-backend-1  Removed
+ Container devops-lab02-db-1  Stopping
+ Container devops-lab02-frontend-1  Stopped
+ Container devops-lab02-frontend-1  Removing
+ Container devops-lab02-frontend-1  Removed
+ Container devops-lab02-db-1  Stopped
+ Container devops-lab02-db-1  Removing
+ Container devops-lab02-db-1  Removed
+ Network devops-lab02_default  Removing
+ Network devops-lab02_default  Removed
+ Network devops-lab02_default  Creating
+ Network devops-lab02_default  Created
+ Container devops-lab02-db-1  Creating
+ Container devops-lab02-frontend-1  Creating
+ Container devops-lab02-frontend-1  Created
+ Container devops-lab02-db-1  Created
+ Container devops-lab02-backend-1  Creating
+ Container devops-lab02-backend-1  Created
+ Container devops-lab02-nginx-1  Creating
+ Container devops-lab02-nginx-1  Created
+ Container devops-lab02-frontend-1  Starting
+ Container devops-lab02-db-1  Starting
+ Container devops-lab02-frontend-1  Started
+ Container devops-lab02-db-1  Started
+ Container devops-lab02-db-1  Waiting
+ Container devops-lab02-db-1  Healthy
+ Container devops-lab02-backend-1  Starting
+ Container devops-lab02-backend-1  Started
+ Container devops-lab02-backend-1  Waiting
+ Container devops-lab02-frontend-1  Waiting
+ Container devops-lab02-frontend-1  Healthy
+ Container devops-lab02-backend-1  Healthy
+ Container devops-lab02-nginx-1  Starting
+ Container devops-lab02-nginx-1  Started
+ Container devops-lab02-nginx-1  Waiting
+ Container devops-lab02-db-1  Waiting
+ Container devops-lab02-backend-1  Waiting
+ Container devops-lab02-frontend-1  Waiting
+ Container devops-lab02-backend-1  Healthy
+ Container devops-lab02-frontend-1  Healthy
+ Container devops-lab02-db-1  Healthy
+ Container devops-lab02-nginx-1  Healthy
+PASS: same notes after down/up; named volume preserved

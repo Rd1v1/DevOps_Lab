@@ -1,0 +1,80 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.08kB 0.0s done
+#1 DONE 0.3s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 1.3s
+
+#3 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#3 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#3 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.4s done
+#3 CACHED
+
+#4 [internal] load metadata for docker.io/library/golang:1.25-alpine
+#4 DONE 1.4s
+
+#5 [internal] load .dockerignore
+#5 transferring context:
+#5 transferring context: 92B done
+#5 DONE 0.5s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [builder 1/6] FROM docker.io/library/golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59
+#7 resolve docker.io/library/golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59
+#7 resolve docker.io/library/golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59 0.7s done
+#7 DONE 0.9s
+
+#6 [internal] load build context
+#6 transferring context: 508B 0.0s done
+#6 DONE 0.6s
+
+#8 [builder 2/6] WORKDIR /src
+#8 CACHED
+
+#9 [builder 3/6] COPY go.mod go.sum ./
+#9 CACHED
+
+#10 [builder 4/6] RUN --mount=type=cache,target=/go/pkg/mod go mod download
+#10 CACHED
+
+#11 [builder 5/6] COPY . .
+#11 CACHED
+
+#12 [builder 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-s -w" -o /out/notes .
+#12 CACHED
+
+#13 [test 1/1] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build go test ./... -v
+#13 25.58 ?   	notes	[no test files]
+#13 25.58 ?   	notes/cmd/memory-pressure	[no test files]
+#13 25.58 ?   	notes/internal/api	[no test files]
+#13 25.61 === RUN   TestHealthReadiness
+#13 25.61 --- PASS: TestHealthReadiness (0.00s)
+#13 25.61 === RUN   TestCreateListAndGet
+#13 25.61 --- PASS: TestCreateListAndGet (0.00s)
+#13 25.61 === RUN   TestRejectInvalidInputs
+#13 25.61 --- PASS: TestRejectInvalidInputs (0.02s)
+#13 25.61 === RUN   TestNotFoundDatabaseFailureAndMethod
+#13 25.61 2026/10/04 09:52:28 database operation failed
+#13 25.61 2026/10/04 09:52:29 database operation failed
+#13 25.61 2026/10/04 09:52:29 database operation failed
+#13 25.61 --- PASS: TestNotFoundDatabaseFailureAndMethod (0.00s)
+#13 25.61 PASS
+#13 25.61 ok  	notes/tests	0.027s
+#13 DONE 26.4s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 0.8s done
+#14 exporting manifest sha256:f73f3847dd0a1f63cd1a22928c1dd61544933afd2825ae28c2655850a2ea9fe6 0.0s done
+#14 exporting config sha256:ca9dd2cd95c10634f4fbc3e67679d37aeee1479a2c88d1a0bca040a21bf72a09 0.0s done
+#14 exporting attestation manifest sha256:03a47c2b02cd01b4220933e8396ea298633a8f37be56d04e8a60aac66b8c7c1a 0.1s done
+#14 exporting manifest list sha256:465ee295490701b1b4f65ddc690678704b9267ca74b88992091cf5330928f002
+#14 exporting manifest list sha256:465ee295490701b1b4f65ddc690678704b9267ca74b88992091cf5330928f002 0.0s done
+#14 naming to docker.io/library/devops-lab02-api-test:latest done
+#14 unpacking to docker.io/library/devops-lab02-api-test:latest
+#14 unpacking to docker.io/library/devops-lab02-api-test:latest 0.3s done
+#14 DONE 1.4s

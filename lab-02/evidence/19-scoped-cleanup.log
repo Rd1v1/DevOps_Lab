@@ -1,0 +1,14 @@
+lab02-oom
+Deleted Images:
+untagged: lab02-oom-backend:latest
+deleted: sha256:88f0f600168fa5f77251c2f7012eefed65476f7ca7ac01760ea0162c338c98d4
+deleted: sha256:752ab2196a9b98e651e93e3c420c0d7edc2332a1e0773d72b6610345d81c905a
+deleted: sha256:d7ffd2bc7d7bb5628a029953ce4d4c3806d639c4d6fddc5c9e02a80ed9d27a76
+
+Total reclaimed space: 7.232kB
+devops-lab02-ui-check
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          33        12        36.72GB   28.44GB (77%)
+Containers      13        7         614.4kB   274.4kB (44%)
+Local Volumes   10        5         1.039GB   191.4MB (18%)
+Build Cache     295       0         14.99GB   5.213GB
